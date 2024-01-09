@@ -1,9 +1,30 @@
-import { useState } from 'react'
+import Title from "./Title.tsx"
+import { TCompaniesData } from "./types.ts" 
+
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
+  const [companies, setCompanies] = useState<TCompaniesData[]>([]);
+
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      try {
+        const response = await fetch("https://www.acme-api.com/api/companies");
+        const json = await response.json();
+        setCompanies(json);
+      } catch(error) {
+        console.error(error);
+      }
+    }
+    fetchCompanies();
+  }, []);
+
+
   return (
-    <h1>BLAH</h1>
+    <div>
+      <Title companies={ companies }/>
+    </div>
   );
 }
 
