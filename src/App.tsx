@@ -1,8 +1,8 @@
-import Title from "./Title.tsx"
 import { TCompaniesData } from "./types.ts" 
-
 import { useEffect, useState } from 'react'
 import './App.css'
+import Title from "./Title.tsx"
+import Contacts from "./Contacts.tsx"
 
 function App() {
   const [companies, setCompanies] = useState<TCompaniesData[]>([]);
@@ -24,6 +24,7 @@ function App() {
   return (
     <div>
       <Title companies={ companies }/>
+      <Contacts companies={ companies }/>
     </div>
   );
 }
