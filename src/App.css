@@ -1,0 +1,55 @@
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(
+    to right,
+    rgb(0, 62, 194),
+    rgb(1, 106, 204),
+    rgb(2, 157, 168)
+  );
+}
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.appRoot {
+  width: 65%;
+  margin: auto;
+}
+.detailButton {
+  border: 2px solid black;
+  padding: 1rem;
+  width: 12rem;
+}
+.detailButton:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.4);
+}
+.lessDetailButton {
+  border: 2px solid black;
+  padding: 1rem;
+  width: 12rem;
+}
+.lessDetailButton:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.4);
+}
+.Companies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+section {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  flex-flow: column wrap;
+  border: 2px solid black;
+  padding: 1rem;
+  margin: 0.25rem;
+}
+section:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

@@ -1,11 +1,14 @@
-import { TCompaniesData } from "./types.ts" 
-import { useEffect, useState } from 'react'
-import './App.css'
-import Title from "./Title.tsx"
-import Contacts from "./Contacts.tsx"
+import { TCompaniesData } from "./types.ts";
+import { useEffect, useState } from "react";
+import "./App.css";
+import Title from "./Title.tsx";
+import Contacts from "./Contacts.tsx";
 
 function App() {
   const [companies, setCompanies] = useState<TCompaniesData[]>([]);
+  const [contactDetail, setContactDetail] = useState<TCompaniesData>();
+  const [isToggled, setToggle] = useState(false);
+  const [idFromHash, setId] = useState(+window.location.hash.slice(1));
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -13,20 +16,29 @@ function App() {
         const response = await fetch("https://www.acme-api.com/api/companies");
         const json = await response.json();
         setCompanies(json);
-      } catch(error) {
+      } catch (error) {
         console.error(error);
       }
-    }
+    };
     fetchCompanies();
-  }, []);
 
+    window.addEventListener("hashchange", () => {
+      setId(+window.location.hash.slice(1));
+    });
+  }, [companies, contactDetail, idFromHash]);
 
   return (
-    <div>
-      <Title companies={ companies }/>
-      <Contacts companies={ companies }/>
+    <div className="appRoot">
+      <Title companies={companies} />
+      <Contacts
+        companies={companies}
+        contactDetail={contactDetail}
+        setContactDetail={setContactDetail}
+        isToggled={isToggled}
+        setToggle={setToggle}
+      />
     </div>
   );
 }
 
-export default App
+export default App;
