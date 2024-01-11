@@ -13,6 +13,7 @@ export type TCompaniesDataArray = {
 }
 export type TContactsProps = {
     companies: TCompaniesData[];
+    idFromHash: string;
     isToggled: boolean;
     setToggle: (isToggled: boolean) => void;
     contactDetail: TCompaniesData | undefined;

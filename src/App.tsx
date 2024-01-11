@@ -8,16 +8,16 @@ function App() {
   const [companies, setCompanies] = useState<TCompaniesData[]>([]);
   const [contactDetail, setContactDetail] = useState<TCompaniesData>();
   const [isToggled, setToggle] = useState(false);
-  const [idFromHash, setId] = useState(+window.location.hash.slice(1));
+  const [idFromHash, setId] = useState(window.location.hash.slice(1));
 
   useEffect(() => {
     const hashChange = () => {
       window.addEventListener("hashchange", () => {
-        setId(+window.location.hash.slice(1));
+        setId(window.location.hash.slice(1));
       });
       hashChange();
     };
-  }, [idFromHash]);
+  }, []);
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -30,13 +30,14 @@ function App() {
       }
     };
     fetchCompanies();
-  }, [companies, contactDetail, idFromHash]);
+  }, []);
 
   return (
     <div className="appRoot">
       <Title companies={companies} />
       <Contacts
         companies={companies}
+        idFromHash={idFromHash}
         contactDetail={contactDetail}
         setContactDetail={setContactDetail}
         isToggled={isToggled}

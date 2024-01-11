@@ -3,6 +3,7 @@ import ContactDetail from "./ContactDetail";
 
 const Contacts = ({
   companies,
+  idFromHash,
   contactDetail,
   setContactDetail,
   isToggled,
