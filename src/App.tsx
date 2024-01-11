@@ -31,7 +31,7 @@ function App() {
     };
     fetchCompanies();
   }, []);
-
+  console.log(idFromHash);
   return (
     <div className="appRoot">
       <Title companies={companies} />
