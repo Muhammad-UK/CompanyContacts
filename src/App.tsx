@@ -11,6 +11,15 @@ function App() {
   const [idFromHash, setId] = useState(+window.location.hash.slice(1));
 
   useEffect(() => {
+    const hashChange = () => {
+      window.addEventListener("hashchange", () => {
+        setId(+window.location.hash.slice(1));
+      });
+      hashChange();
+    };
+  }, [idFromHash]);
+
+  useEffect(() => {
     const fetchCompanies = async () => {
       try {
         const response = await fetch("https://www.acme-api.com/api/companies");
@@ -21,10 +30,6 @@ function App() {
       }
     };
     fetchCompanies();
-
-    window.addEventListener("hashchange", () => {
-      setId(+window.location.hash.slice(1));
-    });
   }, [companies, contactDetail, idFromHash]);
 
   return (

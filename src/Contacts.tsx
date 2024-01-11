@@ -25,7 +25,7 @@ const Contacts = ({
               <h2
                 className="detailButton"
                 onClick={() => {
-                  window.location.hash += company.id;
+                  window.location.hash = company.id;
                   setToggle(true);
                   setContactDetail(company);
                 }}
